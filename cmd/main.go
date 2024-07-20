@@ -2,6 +2,8 @@ package main
 
 import (
 	"os"
+
+	"github.com/wkoury/todone/internal/files"
 )
 
 func main() {

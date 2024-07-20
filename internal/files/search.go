@@ -5,6 +5,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/wkoury/todone/internal/format"
 )
 
 func GetLines(path string) []string {

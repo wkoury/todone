@@ -1,4 +1,4 @@
-module todone
+module github.com/wkoury/todone
 
 go 1.22.5
 

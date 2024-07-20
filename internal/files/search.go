@@ -23,11 +23,14 @@ func SearchFile(path string) {
 	lines := GetLines(path)
 
 	for ii, line := range lines {
-		if strings.Contains(line, "TODO") {
-			format.WriteMsg(path, ii+1, line, "TODO")
-		}
-		if strings.Contains(line, "FIXME") {
-			format.WriteMsg(path, ii+1, line, "FIXME")
+		// If the line is more than 200 characters long, it probably isn't something worth pointing out
+		if len(line) <= 200 {
+			if strings.Contains(line, "TODO") {
+				format.WriteMsg(path, ii+1, line, "TODO")
+			}
+			if strings.Contains(line, "FIXME") {
+				format.WriteMsg(path, ii+1, line, "FIXME")
+			}
 		}
 	}
 }
@@ -38,7 +41,8 @@ func SearchDirectory(path string) error {
 			return err
 		}
 
-		if !info.IsDir() {
+		// TODO: find more ignore paths here
+		if !info.IsDir() && !strings.Contains(path, "node_modules") {
 			SearchFile(path)
 		}
 

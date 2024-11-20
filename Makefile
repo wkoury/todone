@@ -24,12 +24,10 @@ test:
 	go test $(GO_FILES)
 
 lint:
-	@echo "Running golangci-lint..."
-	golangci-lint run ./...
+	staticcheck ./...
 
 fmt:
-	@echo "Formatting code with gofmt..."
-	go fmt $(GO_FILES)
+	go fmt ./...
 
 tidy:
 	go mod tidy
